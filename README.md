@@ -22,6 +22,7 @@ How to Run
 	2. execute this from kernel source directory : make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-boneblack.dtb
 	   This will create the dtb file which you can then copy to the board. Use either step 2 or step 3
 4. Copy the .ko file to any location in the board.
+	1. You can use the makefile itself to copy the file. use 'make copy-drv' (copy-dtb for dtb file)
 5. copy the .dtb file to the boot partition of the board. 
 	1. You might have to mount the boot partition before copying.
 	2. Reboot after copying. Kernel should automatically load the dtb during boot time
@@ -29,7 +30,7 @@ How to Run
 6. Now you can load the driver using insmod
 	1. driver should print the gpio devices detected when insmod is executed
 	2. if the driver is loaded successfully, you can see the devices here : /sys/class/bone_gpios/
-	3. we can control 3 user leds in the board with this driver(0,1 and 2)
+	3. we can control upto 3 user leds in the board with this driver(user-led 0,1 and 2)
 	4. Example: go inside an led: ex: /sys/class/bone_gpios/usrled1/
 	   you can see the current configruation of the led (direction and value)
 	5. use echo 1 > value to turn on the led and 0 to off.
